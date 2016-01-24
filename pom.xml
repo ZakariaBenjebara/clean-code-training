@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>parent</module>
-        <module>grossips-exercice</module>
+        <module>gossips-exercise</module>
     </modules>
 
 </project>
