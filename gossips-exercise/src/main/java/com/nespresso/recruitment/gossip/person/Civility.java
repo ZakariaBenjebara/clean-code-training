@@ -1,12 +1,12 @@
 package com.nespresso.recruitment.gossip.person;
 
-public enum Prefix {
+public enum Civility {
 
     GENTLMAN("Sir") ,MISTER("Mr"), DOCTOR("Dr"), AGENT("Agent"), PROFESSOR("Pr"), LADY("Lady"), NULL("");
 
     private final String prefix;
 
-    Prefix(String prefix) {
+    Civility(String prefix) {
         this.prefix = prefix;
     }
 
@@ -14,23 +14,23 @@ public enum Prefix {
         return prefix;
     }
 
-    public static Prefix fromString(final String value) {
+    public static Civility fromString(final String value) {
         if (value == null)
             throw new IllegalArgumentException("Missing the withPrefix");
 
-        for (Prefix prefix : Prefix.values()) {
-            if (prefix.getPrefix().equals(value))
-                return prefix;
+        for (Civility civility : Civility.values()) {
+            if (civility.getPrefix().equals(value))
+                return civility;
         }
         throw new IllegalStateException();
     }
 
-    public static boolean isDoctor(final Prefix prefix) {
-        return prefix == DOCTOR;
+    public static boolean isDoctor(final Civility civility) {
+        return civility == DOCTOR;
     }
 
-    public static boolean isGentleMan(final Prefix prefix) {
-        return prefix == GENTLMAN;
+    public static boolean isGentleMan(final Civility civility) {
+        return civility == GENTLMAN;
     }
 
 }
