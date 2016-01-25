@@ -11,7 +11,7 @@ import com.nespresso.recruitment.gossip.spreader.SpreadStrategyFactory;
 
 import java.util.Observable;
 
-import static com.nespresso.recruitment.gossip.message.MessageBody.*;
+import static com.nespresso.recruitment.gossip.message.MessageBody.EMPTY_MESSAGE;
 
 public abstract class Person extends Observable implements GossipsListener {
 
