@@ -2,17 +2,19 @@ package com.nespresso.recruitment.gossip.person;
 
 import com.nespresso.recruitment.gossip.message.Envelop;
 
+import static com.nespresso.recruitment.gossip.message.MessageBody.EMPTY_MESSAGE;
+
 public class Lady extends Person {
 
-    private Envelop incomingMessage = new Envelop(NULL_PERSON , NULL_PERSON, NULL_MESSAGE);
+    private Envelop incomingMessage = new Envelop(NULL_PERSON, NULL_PERSON, EMPTY_MESSAGE);
 
-    public Lady(String name, Prefix prefix) {
-        super(name, prefix);
+    public Lady(String name, Civility civility) {
+        super(name, civility);
     }
 
     @Override
     public void saveAsIncomingMessage(final Envelop envelop) {
-            incomingMessage = envelop;
+        incomingMessage = envelop;
     }
 
     @Override
@@ -26,11 +28,11 @@ public class Lady extends Person {
 
     @Override
     public void onGossips() {
-        if (Person.isDoctor(incomingMessage.from())) {
+        if (incomingMessage.isFromDoctor()) {
             messageToSay = incomingMessage.body().checkNotEmptyContent()
-                    ? incomingMessage.body() : NULL_MESSAGE;
+                    ? incomingMessage.body() : EMPTY_MESSAGE;
         } else {
-            messageToSay = NULL_MESSAGE;
+            messageToSay = EMPTY_MESSAGE;
         }
     }
 

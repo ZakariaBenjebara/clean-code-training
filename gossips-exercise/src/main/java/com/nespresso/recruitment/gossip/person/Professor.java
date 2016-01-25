@@ -3,17 +3,19 @@ package com.nespresso.recruitment.gossip.person;
 import com.nespresso.recruitment.gossip.message.Envelop;
 import com.nespresso.recruitment.gossip.message.MessageBody;
 
+import static com.nespresso.recruitment.gossip.message.MessageBody.EMPTY_MESSAGE;
+
 public class Professor extends Person {
 
-    private MessageBody incomingMessage = NULL_MESSAGE;
+    private MessageBody incomingMessage = EMPTY_MESSAGE;
 
-    public Professor(String name, Prefix prefix) {
-        super(name, prefix);
+    public Professor(String name, Civility civility) {
+        super(name, civility);
     }
 
     @Override
     public void saveAsIncomingMessage(final Envelop envelop) {
-            incomingMessage = envelop.body();
+        incomingMessage = envelop.body();
     }
 
     @Override
@@ -22,18 +24,11 @@ public class Professor extends Person {
 
     @Override
     public String ask() {
-        return incomingMessage.content();
+        return messageToSay.content();
     }
 
     @Override
     public void onGossips() {
-        messageToSay = (incomingMessage.checkNotEmptyContent() == true) ? incomingMessage : NULL_MESSAGE;
-    }
-
-    @Override
-    public String toString() {
-        return "Mister{" + super.toString() +
-                "incomingMessage=" + incomingMessage +
-                '}';
+        messageToSay = incomingMessage.checkNotEmptyContent() ? incomingMessage : EMPTY_MESSAGE;
     }
 }

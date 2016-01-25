@@ -5,6 +5,8 @@ public class MessageBody {
 
     private final String content;
 
+    public static final MessageBody EMPTY_MESSAGE = new MessageBody("");
+
     public MessageBody(String content) {
         this.content = content;
     }

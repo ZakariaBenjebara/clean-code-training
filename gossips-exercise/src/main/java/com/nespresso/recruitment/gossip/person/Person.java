@@ -11,11 +11,11 @@ import com.nespresso.recruitment.gossip.spreader.SpreadStrategyFactory;
 
 import java.util.Observable;
 
+import static com.nespresso.recruitment.gossip.message.MessageBody.*;
+
 public abstract class Person extends Observable implements GossipsListener {
 
-    protected final static MessageBody NULL_MESSAGE = new MessageBody("");
-
-    private final Prefix prefix;
+    private final Civility civility;
 
     private final String name;
 
@@ -23,15 +23,15 @@ public abstract class Person extends Observable implements GossipsListener {
 
     private final ReceiverStrategy receiverStrategy;
 
-    protected MessageBody messageToSay = NULL_MESSAGE;
+    protected MessageBody messageToSay = EMPTY_MESSAGE;
 
     protected boolean hasGossips = false;
 
-    protected Person(final String name, final Prefix prefix) {
+    protected Person(final String name, final Civility civility) {
         this.name = name;
-        this.prefix = prefix;
-        this.spreadStrategy = SpreadStrategyFactory.INSTANCE.createSpreadStrategyForPerson(prefix, this);
-        this.receiverStrategy = ReceiverStrategyFactory.INSTANCE.createReceiverForPersonByCivility(prefix, this);
+        this.civility = civility;
+        this.spreadStrategy = SpreadStrategyFactory.INSTANCE.createSpreadStrategyForPerson(civility, this);
+        this.receiverStrategy = ReceiverStrategyFactory.INSTANCE.createReceiverForPersonByCivility(civility, this);
     }
 
     public Feedback receiveMessage(final Envelop envelop) {
@@ -42,6 +42,10 @@ public abstract class Person extends Observable implements GossipsListener {
             return receiverStrategy.receive(envelop);
         }
         return new Feedback().refused();
+    }
+
+    public void messageToSay(MessageBody messageToSay) {
+        this.messageToSay = messageToSay;
     }
 
     public abstract void messageAccepted();
@@ -59,24 +63,19 @@ public abstract class Person extends Observable implements GossipsListener {
         notifyObservers(messageToSay);
     }
 
-    public static boolean isDoctor(final Person person) {
-        if (person == null)
-            return false;
-        return Prefix.isDoctor(person.prefix);
+    public boolean isDoctor() {
+        return Civility.isDoctor(this.civility);
     }
 
-    public static boolean isGentleMan(final Person person) {
-        if (person == null)
-            return false;
-        return Prefix.isGentleMan(person.prefix);
+    public boolean isGentleMan() {
+        return Civility.isGentleMan(this.civility);
     }
-
 
     public abstract void saveAsIncomingMessage(final Envelop envelop);
 
     public abstract String ask();
 
-    public static final Person NULL_PERSON = new Person("", Prefix.AGENT) {
+    public static final Person NULL_PERSON = new Person("", Civility.NULL) {
 
         @Override
         public void messageAccepted() {

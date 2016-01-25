@@ -15,8 +15,8 @@ public class Doctor extends Person {
 
     private final Queue<MessageBody> outMessages = new ConcurrentLinkedQueue<>();
 
-    public Doctor(String name, Prefix prefix) {
-        super(name, prefix);
+    public Doctor(String name, Civility civility) {
+        super(name, civility);
     }
 
     @Override

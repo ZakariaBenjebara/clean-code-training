@@ -1,13 +1,13 @@
 package com.nespresso.recruitment.gossip.reciever;
 
+import com.nespresso.recruitment.gossip.person.Civility;
 import com.nespresso.recruitment.gossip.person.Person;
-import com.nespresso.recruitment.gossip.person.Prefix;
 
 public enum ReceiverStrategyFactory {
     INSTANCE;
 
-    public ReceiverStrategy createReceiverForPersonByCivility(final Prefix prefix, final Person person) {
-        switch (prefix) {
+    public ReceiverStrategy createReceiverForPersonByCivility(final Civility civility, final Person person) {
+        switch (civility) {
             case MISTER:
                 return new MisterReceiver(person);
             case DOCTOR:
@@ -18,8 +18,10 @@ public enum ReceiverStrategyFactory {
                 return new ProfessorReceiver(person);
             case LADY:
                 return new LadyReceiver(person);
-            case GENTLMAN:
+            case GENTLEMAN:
                 return new GentleReceiver(person);
+            case NULL:
+                return null;
             default:
                 throw new IllegalStateException();
         }

@@ -3,12 +3,16 @@ package com.nespresso.recruitment.gossip.person;
 import com.nespresso.recruitment.gossip.message.Envelop;
 import com.nespresso.recruitment.gossip.message.MessageBody;
 
+import static com.nespresso.recruitment.gossip.message.MessageBody.*;
+
 public class Gentle extends Person {
 
-    private MessageBody incomingMessage = NULL_MESSAGE;
+    private MessageBody incomingMessage = EMPTY_MESSAGE;
 
-    public Gentle(String name, Prefix prefix) {
-        super(name, prefix);
+    private MessageBody currentMessage = EMPTY_MESSAGE;
+
+    public Gentle(String name, Civility civility) {
+        super(name, civility);
     }
 
     @Override
@@ -22,14 +26,15 @@ public class Gentle extends Person {
 
     @Override
     public String ask() {
-        return incomingMessage.content();
+        return currentMessage.content();
     }
 
     @Override
     public void onGossips() {
         final String reverse = new StringBuilder(incomingMessage.content()).reverse().toString();
-        messageToSay = incomingMessage.checkNotEmptyContent() ? new MessageBody(reverse) : NULL_MESSAGE;
-        incomingMessage = NULL_MESSAGE;
+        messageToSay = incomingMessage.checkNotEmptyContent() ? new MessageBody(reverse) : EMPTY_MESSAGE;
+        currentMessage = incomingMessage;
+        incomingMessage = EMPTY_MESSAGE;
     }
 
     @Override

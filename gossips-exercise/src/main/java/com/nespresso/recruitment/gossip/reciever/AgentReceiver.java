@@ -12,14 +12,14 @@ final class AgentReceiver extends ReceiverStrategy {
 
     @Override
     public Feedback receive(final Envelop envelop) {
-        if (envelop == null || !envelop.body().checkNotEmptyContent())
+        if (envelop == null)
             return new Feedback().refused();
 
-        pushToIncomingMessages(envelop);
+        pushToIncomingMessage(envelop);
         return new Feedback().accepted();
     }
 
-    private void pushToIncomingMessages(final Envelop envelop) {
+    private void pushToIncomingMessage(final Envelop envelop) {
         person.saveAsIncomingMessage(envelop);
     }
 }

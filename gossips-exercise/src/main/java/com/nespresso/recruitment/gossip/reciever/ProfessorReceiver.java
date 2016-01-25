@@ -17,8 +17,6 @@ final class ProfessorReceiver extends ReceiverStrategy {
         if (envelop == null)
             return new Feedback().refused();
 
-        System.out.println("Message received " + envelop +" counter "+spreadCounter);
-
         if (spreadCounter == 3) {
             pushToIncomingMessages(envelop);
             spreadCounter = 1;

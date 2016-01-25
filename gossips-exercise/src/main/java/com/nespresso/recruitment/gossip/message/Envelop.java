@@ -10,6 +10,8 @@ public class Envelop {
 
     private final MessageBody messageBody;
 
+    public static final Envelop EMPTY_ENVELOP = new Envelop(Person.NULL_PERSON, Person.NULL_PERSON, MessageBody.EMPTY_MESSAGE);
+
     public Envelop(Person from, Person destination, MessageBody messageBody) {
         this.from = from;
         this.destination = destination;
@@ -26,6 +28,10 @@ public class Envelop {
 
     public Person from() {
         return from;
+    }
+
+    public boolean isFromDoctor() {
+        return from.isDoctor();
     }
 
     @Override

@@ -6,12 +6,14 @@ import com.nespresso.recruitment.gossip.message.MessageBody;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+import static com.nespresso.recruitment.gossip.message.MessageBody.*;
+
 public class Mister extends Person {
 
     private final Queue<MessageBody> incomingMessages = new ConcurrentLinkedQueue<>();
 
-    public Mister(String name, Prefix prefix) {
-        super(name, prefix);
+    public Mister(String name, Civility civility) {
+        super(name, civility);
     }
 
     @Override
@@ -25,13 +27,14 @@ public class Mister extends Person {
 
     @Override
     public String ask() {
-        return incomingMessages.isEmpty() ? NULL_MESSAGE.content()
-                : incomingMessages.element().content();
+        return messageToSay.checkNotEmptyContent() ? messageToSay.content()
+                : EMPTY_MESSAGE.content();
     }
 
     @Override
     public void onGossips() {
-        messageToSay = incomingMessages.isEmpty() ? NULL_MESSAGE : incomingMessages.remove();
+        messageToSay = incomingMessages.isEmpty() ? EMPTY_MESSAGE : incomingMessages.remove();
+        incomingMessages.clear();
     }
 
     @Override

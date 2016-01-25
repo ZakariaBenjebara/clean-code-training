@@ -7,13 +7,6 @@ import com.nespresso.recruitment.gossip.message.MessageBody;
 
 import java.util.Collection;
 
-/**
- * nespresso-training
- *
- * @author Zakaria BENJEBARA.
- * @date 21/01/16
- * @time 01:00
- */
 public final class MessageUtils {
 
     public static String joint(final String separator, final Collection<MessageBody> messages) {

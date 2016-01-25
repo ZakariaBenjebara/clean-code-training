@@ -2,7 +2,7 @@ package com.nespresso.recruitment.gossip.person;
 
 public enum Civility {
 
-    GENTLMAN("Sir") ,MISTER("Mr"), DOCTOR("Dr"), AGENT("Agent"), PROFESSOR("Pr"), LADY("Lady"), NULL("");
+    GENTLEMAN("Sir") ,MISTER("Mr"), DOCTOR("Dr"), AGENT("Agent"), PROFESSOR("Pr"), LADY("Lady"), NULL("");
 
     private final String prefix;
 
@@ -30,7 +30,7 @@ public enum Civility {
     }
 
     public static boolean isGentleMan(final Civility civility) {
-        return civility == GENTLMAN;
+        return civility == GENTLEMAN;
     }
 
 }

@@ -29,7 +29,7 @@ public class Channel implements Observer {
     public void update(Observable o, Object arg) {
         final Person sender = (Person) o;
         if (sender == source) {
-            if (Person.isGentleMan(sender))
+            if (sender.isGentleMan())
                 return;
             final MessageBody message = (MessageBody) arg;
             final Feedback feedback = receiver.receiveMessage(new Envelop(source, receiver, message));
@@ -38,8 +38,7 @@ public class Channel implements Observer {
             }
         }
         else if (sender == receiver) {
-            if (Person.isGentleMan(receiver)) {
-                System.out.println("the transfert from to "+ this);
+            if (receiver.isGentleMan()) {
                 final MessageBody message = (MessageBody) arg;
                 source.receiveMessage(new Envelop(receiver, source, message));
             }

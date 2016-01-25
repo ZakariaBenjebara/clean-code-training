@@ -2,11 +2,10 @@ package com.nespresso.recruitment.gossip;
 
 import com.nespresso.recruitment.gossip.handler.GossipsHandler;
 import com.nespresso.recruitment.gossip.media.Channel;
-import com.nespresso.recruitment.gossip.message.Envelop;
 import com.nespresso.recruitment.gossip.message.MessageBody;
+import com.nespresso.recruitment.gossip.person.Civility;
 import com.nespresso.recruitment.gossip.person.Person;
 import com.nespresso.recruitment.gossip.person.PersonFactory;
-import com.nespresso.recruitment.gossip.person.Prefix;
 
 import java.util.HashSet;
 import java.util.LinkedHashMap;
@@ -33,7 +32,7 @@ public class Gossips {
         final Map<String, Person> persons = new LinkedHashMap<>();
         for (final String person : namesOfPersons) {
             final String[] splitter = person.split(" ");
-            final Prefix prefix = Prefix.fromString(splitter[0]);
+            final Civility prefix = Civility.fromString(splitter[0]);
             final String name = splitter[1];
             persons.put(name, PersonFactory.INSTANCE.createPerson(name, prefix));
         }
@@ -61,7 +60,7 @@ public class Gossips {
                 break;
             case SAY:
                 final Person asked = persons.get(person);
-                asked.saveAsIncomingMessage(new Envelop(null, null,new MessageBody(commandMemento.command)));
+                asked.messageToSay(new MessageBody(commandMemento.command));
                 break;
             default:
                 throw new IllegalStateException();
@@ -79,11 +78,11 @@ public class Gossips {
     }
 
     public void spread() {
-        gossipsHandler.fireEvent();
         for (final String personName : persons.keySet()) {
             final Person person = persons.get(personName);
             person.spread();
         }
+        gossipsHandler.fireEvent();
     }
 
     private static class CommandMemento {
