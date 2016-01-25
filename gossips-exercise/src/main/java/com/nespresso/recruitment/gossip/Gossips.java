@@ -20,12 +20,16 @@ public class Gossips {
 
     private final GossipsHandler<Person> gossipsHandler;
 
-    private CommandMemento commandMemento;
+    private final PersonLinker personLinker;
+
+    private final MessageBuilder messageBuilder;
 
     public Gossips(final String... namesOfPersons) {
         this.persons = createPersons(namesOfPersons);
         this.channels = new HashSet<>();
         this.gossipsHandler = new GossipsHandler(persons.values());
+        this.personLinker = new PersonLinker(this);
+        this.messageBuilder = new MessageBuilder(this);
     }
 
     private Map<String, Person> createPersons(final String... namesOfPersons) {
@@ -39,42 +43,19 @@ public class Gossips {
         return persons;
     }
 
-    public Gossips say(final String hello) {
-        save(new CommandMemento(CommandMemento.Type.SAY, hello));
-        return this;
+    public MessageBuilder say(final String message) {
+        messageBuilder.say(message);
+        return messageBuilder;
     }
 
-    public Gossips from(final String person) {
-        save(new CommandMemento(CommandMemento.Type.FROM, person));
-        return this;
-    }
-
-    public Gossips to(final String person) {
-        final CommandMemento.Type typeOfCommand = commandMemento.type;
-        switch (typeOfCommand) {
-            case FROM:
-                final Person from = persons.get(commandMemento.command);
-                final Person to = persons.get(person);
-                final Channel channel = new Channel(from, to);
-                channels.add(channel);
-                break;
-            case SAY:
-                final Person asked = persons.get(person);
-                asked.messageToSay(new MessageBody(commandMemento.command));
-                break;
-            default:
-                throw new IllegalStateException();
-        }
-        return this;
+    public PersonLinker from(final String person) {
+        personLinker.from(person);
+        return personLinker;
     }
 
     public String ask(final String person) {
         final Person asked = persons.get(person);
         return asked.ask() == null ? "" : asked.ask();
-    }
-
-    private void save(final CommandMemento commandMemento) {
-        this.commandMemento = commandMemento;
     }
 
     public void spread() {
@@ -85,19 +66,50 @@ public class Gossips {
         gossipsHandler.fireEvent();
     }
 
-    private static class CommandMemento {
+    static final class PersonLinker {
 
-        enum Type {
-            SAY, FROM
+        private final Gossips gossips;
+
+        private String fromNameOfPerson;
+
+        PersonLinker(Gossips gossips) {
+            this.gossips = gossips;
         }
 
-        private final Type type;
+        PersonLinker from(final String nameOfPerson) {
+            this.fromNameOfPerson = nameOfPerson;
+            return this;
+        }
 
-        private final String command;
-
-        public CommandMemento(Type type, String command) {
-            this.type = type;
-            this.command = command;
+        Gossips to(final String nameOfPerson) {
+            final Person from = gossips.persons.get(fromNameOfPerson);
+            final Person to = gossips.persons.get(nameOfPerson);
+            final Channel channel = new Channel(from, to);
+            gossips.channels.add(channel);
+            return gossips;
         }
     }
+
+    static final class MessageBuilder {
+
+        private final Gossips gossips;
+
+        private String messageToSay;
+
+        MessageBuilder(Gossips gossips) {
+            this.gossips = gossips;
+        }
+
+        MessageBuilder say(final String messageToSay) {
+            this.messageToSay = messageToSay;
+            return this;
+        }
+
+        Gossips to(final String nameOfPerson) {
+            final Person to = gossips.persons.get(nameOfPerson);
+            to.messageToSay(new MessageBody(messageToSay));
+            return gossips;
+        }
+    }
+
 }
