@@ -25,13 +25,15 @@ public abstract class Person extends Observable implements GossipsListener {
 
     protected MessageBody messageToSay = EMPTY_MESSAGE;
 
-    protected boolean hasGossips = false;
-
     protected Person(final String name, final Civility civility) {
         this.name = name;
         this.civility = civility;
         this.spreadStrategy = SpreadStrategyFactory.INSTANCE.createSpreadStrategyForPerson(civility, this);
         this.receiverStrategy = ReceiverStrategyFactory.INSTANCE.createReceiverForPersonByCivility(civility, this);
+    }
+
+    public void messageToSay(MessageBody messageToSay) {
+        this.messageToSay = messageToSay;
     }
 
     public Feedback receiveMessage(final Envelop envelop) {
@@ -44,16 +46,6 @@ public abstract class Person extends Observable implements GossipsListener {
         return new Feedback().refused();
     }
 
-    public void messageToSay(MessageBody messageToSay) {
-        this.messageToSay = messageToSay;
-    }
-
-    public abstract void messageAccepted();
-
-    public boolean hasAlreadyGossips() {
-        return hasGossips;
-    }
-
     public synchronized void spread() {
         spreadStrategy.spread();
     }
@@ -62,7 +54,6 @@ public abstract class Person extends Observable implements GossipsListener {
         setChanged();
         notifyObservers(messageToSay);
     }
-
     public boolean isDoctor() {
         return Civility.isDoctor(this.civility);
     }
@@ -70,6 +61,8 @@ public abstract class Person extends Observable implements GossipsListener {
     public boolean isGentleMan() {
         return Civility.isGentleMan(this.civility);
     }
+
+    public abstract void messageAccepted();
 
     public abstract void saveAsIncomingMessage(final Envelop envelop);
 
