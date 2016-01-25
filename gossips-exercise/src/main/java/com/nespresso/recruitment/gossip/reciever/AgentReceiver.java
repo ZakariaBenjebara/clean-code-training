@@ -12,9 +12,6 @@ final class AgentReceiver extends ReceiverStrategy {
 
     @Override
     public Feedback receive(final Envelop envelop) {
-        if (envelop == null)
-            return new Feedback().refused();
-
         pushToIncomingMessage(envelop);
         return new Feedback().accepted();
     }

@@ -14,8 +14,6 @@ final class ProfessorReceiver extends ReceiverStrategy {
 
     @Override
     public Feedback receive(final Envelop envelop) {
-        if (envelop == null)
-            return new Feedback().refused();
 
         if (spreadCounter == 3) {
             pushToIncomingMessages(envelop);

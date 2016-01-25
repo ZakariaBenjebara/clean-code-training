@@ -17,7 +17,6 @@ final class DoctorReceiver extends ReceiverStrategy {
 
         if (envelop.body().checkNotEmptyContent())
             pushToIncomingMessages(envelop);
-
         return new Feedback().accepted();
     }
 

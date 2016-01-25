@@ -8,7 +8,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import static com.nespresso.recruitment.gossip.message.MessageBody.*;
 
-public class Mister extends Person {
+class Mister extends Person {
 
     private final Queue<MessageBody> incomingMessages = new ConcurrentLinkedQueue<>();
 

@@ -9,7 +9,7 @@ import java.util.Set;
 
 import static com.nespresso.recruitment.gossip.message.MessageBody.*;
 
-public class Agent extends Person {
+class Agent extends Person {
 
     private final Set<MessageBody> incomingMessages = new LinkedHashSet<>();
 

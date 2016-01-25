@@ -28,7 +28,7 @@ public abstract class Person extends Observable implements GossipsListener {
     protected Person(final String name, final Civility civility) {
         this.name = name;
         this.civility = civility;
-        this.spreadStrategy = SpreadStrategyFactory.INSTANCE.createSpreadStrategyForPerson(civility, this);
+        this.spreadStrategy = SpreadStrategyFactory.INSTANCE.createSpreadStrategyForPersonByCivility(civility, this);
         this.receiverStrategy = ReceiverStrategyFactory.INSTANCE.createReceiverForPersonByCivility(civility, this);
     }
 
@@ -36,29 +36,31 @@ public abstract class Person extends Observable implements GossipsListener {
         this.messageToSay = messageToSay;
     }
 
-    public Feedback receiveMessage(final Envelop envelop) {
+    public final Feedback receiveMessage(final Envelop envelop) {
         if (envelop == null)
             return new Feedback().refused();
 
         if (envelop.isTheCorrectDestination(this)) {
             return receiverStrategy.receive(envelop);
         }
+
         return new Feedback().refused();
     }
 
-    public synchronized void spread() {
+    public final synchronized void spread() {
         spreadStrategy.spread();
     }
 
-    public void spreadMessage() {
+    public final void spreadMessage() {
         setChanged();
         notifyObservers(messageToSay);
     }
-    public boolean isDoctor() {
+
+    public final boolean isDoctor() {
         return Civility.isDoctor(this.civility);
     }
 
-    public boolean isGentleMan() {
+    public final boolean isGentleMan() {
         return Civility.isGentleMan(this.civility);
     }
 
@@ -91,4 +93,11 @@ public abstract class Person extends Observable implements GossipsListener {
         }
     };
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", civility=" + civility +
+                '}';
+    }
 }

@@ -9,7 +9,9 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class Doctor extends Person {
+import static com.nespresso.recruitment.gossip.message.MessageBody.EMPTY_MESSAGE;
+
+class Doctor extends Person {
 
     private final Set<MessageBody> incomingMessages = new LinkedHashSet<>();
 
@@ -37,8 +39,11 @@ public class Doctor extends Person {
 
     @Override
     public void onGossips() {
-        if (!outMessages.isEmpty())
+        if (!outMessages.isEmpty()) {
             messageToSay = outMessages.remove();
+        } else {
+            messageToSay = EMPTY_MESSAGE;
+        }
     }
 
     @Override

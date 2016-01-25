@@ -4,7 +4,7 @@ import com.nespresso.recruitment.gossip.message.Envelop;
 
 import static com.nespresso.recruitment.gossip.message.MessageBody.EMPTY_MESSAGE;
 
-public class Lady extends Person {
+class Lady extends Person {
 
     private Envelop incomingMessage = new Envelop(NULL_PERSON, NULL_PERSON, EMPTY_MESSAGE);
 
@@ -29,11 +29,9 @@ public class Lady extends Person {
     @Override
     public void onGossips() {
         if (incomingMessage.isFromDoctor()) {
-            messageToSay = incomingMessage.body().checkNotEmptyContent()
-                    ? incomingMessage.body() : EMPTY_MESSAGE;
+            messageToSay = incomingMessage.body().checkNotEmptyContent() ? incomingMessage.body() : EMPTY_MESSAGE;
         } else {
             messageToSay = EMPTY_MESSAGE;
         }
     }
-
 }

@@ -6,7 +6,7 @@ import com.nespresso.recruitment.gossip.person.Person;
 public enum SpreadStrategyFactory {
     INSTANCE;
 
-    public SpreadStrategy createSpreadStrategyForPerson(final Civility civility, final Person person) {
+    public SpreadStrategy createSpreadStrategyForPersonByCivility(final Civility civility, final Person person) {
         switch (civility) {
             case MISTER:
                 return new MisterSpreader(person);

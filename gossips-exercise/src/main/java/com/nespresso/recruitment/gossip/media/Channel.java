@@ -28,18 +28,16 @@ public class Channel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         final Person sender = (Person) o;
+        final MessageBody message = (MessageBody) arg;
         if (sender == source) {
             if (sender.isGentleMan())
                 return;
-            final MessageBody message = (MessageBody) arg;
             final Feedback feedback = receiver.receiveMessage(new Envelop(source, receiver, message));
             if (feedback.isAccepted()) {
                 source.messageAccepted();
             }
-        }
-        else if (sender == receiver) {
-            if (receiver.isGentleMan()) {
-                final MessageBody message = (MessageBody) arg;
+        } else if (sender == receiver) {
+            if (sender.isGentleMan()) {
                 source.receiveMessage(new Envelop(receiver, source, message));
             }
         }

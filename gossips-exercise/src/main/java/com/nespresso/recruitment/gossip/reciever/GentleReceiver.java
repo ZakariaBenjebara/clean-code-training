@@ -12,11 +12,10 @@ final class GentleReceiver extends ReceiverStrategy {
 
     @Override
     public Feedback receive(final Envelop envelop) {
-        if (envelop == null || !envelop.body().checkNotEmptyContent())
+        if (!envelop.body().checkNotEmptyContent())
             return new Feedback().refused();
 
         pushToIncomingMessages(envelop);
-
         return new Feedback().accepted();
     }
 

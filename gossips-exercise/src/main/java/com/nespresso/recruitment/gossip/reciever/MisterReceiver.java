@@ -12,20 +12,15 @@ final class MisterReceiver extends ReceiverStrategy {
 
     @Override
     public Feedback receive(final Envelop envelop) {
-        if (envelop == null)
-            return new Feedback().refused();
 
-        if (person.hasAlreadyGossips()) {
-            return new Feedback().refused();
+        if (envelop.body().checkNotEmptyContent()) {
+            pushToIncomingMessage(envelop);
         }
-
-        if (envelop.body().checkNotEmptyContent())
-            pushToIncomingMessages(envelop);
 
         return new Feedback().accepted();
     }
 
-    private void pushToIncomingMessages(final Envelop envelop) {
+    private void pushToIncomingMessage(final Envelop envelop) {
         person.saveAsIncomingMessage(envelop);
     }
 }

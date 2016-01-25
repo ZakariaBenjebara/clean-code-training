@@ -5,7 +5,7 @@ import com.nespresso.recruitment.gossip.message.MessageBody;
 
 import static com.nespresso.recruitment.gossip.message.MessageBody.*;
 
-public class Gentle extends Person {
+class Gentle extends Person {
 
     private MessageBody incomingMessage = EMPTY_MESSAGE;
 
