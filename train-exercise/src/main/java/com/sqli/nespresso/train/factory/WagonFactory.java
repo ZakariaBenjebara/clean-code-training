@@ -3,11 +3,10 @@ package com.sqli.nespresso.train.factory;
 import com.sqli.nespresso.train.wagon.*;
 import com.sqli.nespresso.train.utils.Preconditions;
 
-public final class WagonFactory {
+public enum WagonFactory {
+    INSTANCE;
 
-    private WagonFactory(){}
-
-    public static Wagon createWagon(WagonType type) {
+    public Wagon createWagon(WagonType type) {
         Preconditions.assertNotNull(type);
         switch (type) {
             case HEAD:

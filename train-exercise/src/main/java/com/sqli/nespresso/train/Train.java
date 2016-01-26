@@ -10,9 +10,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by user on 05/01/2016.
- */
 public class Train {
 
     private final List<Wagon> wagons;
@@ -64,6 +61,6 @@ public class Train {
 
     private Wagon createWagon(final char wagonId) {
         final WagonType wagonType = WagonType.fromCharConstant(wagonId);
-        return WagonFactory.createWagon(wagonType);
+        return WagonFactory.INSTANCE.createWagon(wagonType);
     }
 }
