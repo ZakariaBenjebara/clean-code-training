@@ -12,11 +12,9 @@ final class DoctorReceiver extends ReceiverStrategy {
 
     @Override
     public Feedback receive(final Envelop envelop) {
-        if (envelop == null)
-            return new Feedback().refused();
-
         if (envelop.body().checkNotEmptyContent())
             pushToIncomingMessages(envelop);
+
         return new Feedback().accepted();
     }
 
