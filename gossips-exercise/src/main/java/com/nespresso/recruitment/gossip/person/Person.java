@@ -4,8 +4,8 @@ import com.nespresso.recruitment.gossip.handler.GossipsListener;
 import com.nespresso.recruitment.gossip.message.Envelop;
 import com.nespresso.recruitment.gossip.message.Feedback;
 import com.nespresso.recruitment.gossip.message.MessageBody;
-import com.nespresso.recruitment.gossip.reciever.ReceiverStrategy;
-import com.nespresso.recruitment.gossip.reciever.ReceiverStrategyFactory;
+import com.nespresso.recruitment.gossip.receiver.ReceiverStrategy;
+import com.nespresso.recruitment.gossip.receiver.ReceiverStrategyFactory;
 import com.nespresso.recruitment.gossip.spreader.SpreadStrategy;
 import com.nespresso.recruitment.gossip.spreader.SpreadStrategyFactory;
 
