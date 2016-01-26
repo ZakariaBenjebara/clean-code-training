@@ -16,7 +16,7 @@ public enum Civility {
 
     public static Civility fromString(final String civilityName) {
         if (civilityName == null)
-            throw new IllegalArgumentException("Missing the civility");
+            throw new IllegalArgumentException("Missing the name of civility");
 
         for (Civility civility : Civility.values()) {
             if (civility.getPrefix().equals(civilityName))

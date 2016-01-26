@@ -3,6 +3,9 @@ package com.nespresso.recruitment.gossip.spreader;
 import com.nespresso.recruitment.gossip.person.Civility;
 import com.nespresso.recruitment.gossip.person.Person;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum SpreadStrategyFactory {
     INSTANCE;
 
