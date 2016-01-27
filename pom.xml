@@ -12,5 +12,6 @@
         <module>parent</module>
         <module>grossips-exercice</module>
         <module>train-exercise</module>
+        <module>race-battle-ship-exercise</module>
     </modules>
 </project>
