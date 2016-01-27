@@ -8,13 +8,13 @@ import java.io.IOException;
 abstract class WagonWriterTemplate<T extends Wagon, w extends CharSequence> implements Writable<T, w> {
 
     @Override
-    public void write(Appendable appendable, Context<T, w> context) throws IOException {
+    public void write(final Appendable appendable, final Context<T, w> context) throws IOException {
         Preconditions.assertNotNull(context);
         Preconditions.assertNotNull(appendable);
 
         appendable.append(context.leftBounds())
-                  .append(shape(context.get()))
-                  .append(context.rightBounds());
+                .append(shape(context.get()))
+                .append(context.rightBounds());
     }
 
     protected abstract w shape(T wagon);
