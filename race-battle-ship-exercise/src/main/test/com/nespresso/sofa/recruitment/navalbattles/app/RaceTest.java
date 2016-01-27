@@ -44,7 +44,6 @@ public class RaceTest {
         assertThat(race.winner()).isEqualTo(b);
     }
 
-    @Ignore
     @Test
     public void clipperGoesFasterWithCannons() {
 
