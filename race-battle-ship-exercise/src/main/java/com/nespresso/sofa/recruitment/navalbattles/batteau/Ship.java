@@ -1,5 +1,10 @@
 package com.nespresso.sofa.recruitment.navalbattles.batteau;
 
+import com.nespresso.sofa.recruitment.navalbattles.race.RaceStrategy;
+
+import java.util.Collections;
+import java.util.List;
+
 public class Ship extends AbstractShip {
 
     public Ship(int displacement, int mast) {
@@ -10,5 +15,8 @@ public class Ship extends AbstractShip {
         super(displacement, mast, canonNumber);
     }
 
-
+    @Override
+    protected List<RaceStrategy> raceStrategies() {
+        return Collections.emptyList();
+    }
 }

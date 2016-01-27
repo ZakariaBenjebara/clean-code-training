@@ -1,5 +1,9 @@
 package com.nespresso.sofa.recruitment.navalbattles.batteau;
 
+import com.nespresso.sofa.recruitment.navalbattles.race.RaceStrategy;
+
+import java.util.List;
+
 public abstract class AbstractShip {
 
     private final int displacement;
@@ -21,9 +25,19 @@ public abstract class AbstractShip {
     }
 
     public double speed() {
+        double speed = baseSpeed();
+        for (final RaceStrategy raceStrategy : raceStrategies()) {
+            speed = raceStrategy.speed(baseSpeed());
+        }
+        return speed;
+    }
+
+    public double baseSpeed() {
         if (mast == 0) {
             throw new IllegalStateException();
         }
         return displacement / mast;
     }
+
+    protected abstract List<RaceStrategy> raceStrategies();
 }

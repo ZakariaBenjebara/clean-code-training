@@ -34,7 +34,6 @@ public class RaceTest {
 
 
     // any ship can carry cannons, each cannons grant 0.5% cumulative penalty to withSpeed
-    @Ignore
     @Test
     public void armedShipAreUsuallySlower() {
 
