@@ -2,7 +2,6 @@ package com.nespresso.sofa.recruitment.navalbattles.app;
 
 import com.nespresso.sofa.recruitment.navalbattles.batteau.Clipper;
 import com.nespresso.sofa.recruitment.navalbattles.batteau.Ship;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

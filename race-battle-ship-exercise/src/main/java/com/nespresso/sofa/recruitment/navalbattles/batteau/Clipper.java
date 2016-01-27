@@ -1,11 +1,12 @@
 package com.nespresso.sofa.recruitment.navalbattles.batteau;
 
 import com.nespresso.sofa.recruitment.navalbattles.race.RaceStrategy;
-import com.nespresso.sofa.recruitment.navalbattles.race.RaceStrategyFactory;
 import com.nespresso.sofa.recruitment.navalbattles.race.SpeedType;
 
 import java.util.Arrays;
 import java.util.List;
+
+import static com.nespresso.sofa.recruitment.navalbattles.race.RaceStrategyFactory.INSTANCE;
 
 public class Clipper extends AbstractShip {
 
@@ -19,6 +20,7 @@ public class Clipper extends AbstractShip {
 
     @Override
     protected List<RaceStrategy> raceStrategies() {
-        return Arrays.asList(RaceStrategyFactory.INSTANCE.createRaceStrategyBySpeedType(SpeedType.WITH_CANNON, this), RaceStrategyFactory.INSTANCE.createRaceStrategyBySpeedType(SpeedType.CLIPPER, this));
+        return Arrays.asList(INSTANCE.createRaceStrategyBySpeedType(SpeedType.WITH_CANNON, this),
+                INSTANCE.createRaceStrategyBySpeedType(SpeedType.CLIPPER, this));
     }
 }
