@@ -10,6 +10,6 @@ public abstract class RaceStrategy {
         this.ship = ship;
     }
 
-    public abstract double speed(double baseSpeed);
+    public abstract double adaptSpeed(double baseSpeed);
 
 }

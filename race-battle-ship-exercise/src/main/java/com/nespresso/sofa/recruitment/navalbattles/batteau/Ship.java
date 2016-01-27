@@ -1,8 +1,10 @@
 package com.nespresso.sofa.recruitment.navalbattles.batteau;
 
 import com.nespresso.sofa.recruitment.navalbattles.race.RaceStrategy;
+import com.nespresso.sofa.recruitment.navalbattles.race.RaceStrategyFactory;
+import com.nespresso.sofa.recruitment.navalbattles.race.SpeedType;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public class Ship extends AbstractShip {
@@ -17,6 +19,6 @@ public class Ship extends AbstractShip {
 
     @Override
     protected List<RaceStrategy> raceStrategies() {
-        return Collections.emptyList();
+        return Arrays.asList(RaceStrategyFactory.INSTANCE.createRaceStrategyBySpeedType(SpeedType.WITH_CANNON, this));
     }
 }

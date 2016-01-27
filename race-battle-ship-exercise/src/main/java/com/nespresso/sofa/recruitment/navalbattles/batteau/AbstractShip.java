@@ -27,7 +27,7 @@ public abstract class AbstractShip {
     public double speed() {
         double speed = baseSpeed();
         for (final RaceStrategy raceStrategy : raceStrategies()) {
-            speed = raceStrategy.speed(baseSpeed());
+            speed = raceStrategy.adaptSpeed(speed);
         }
         return speed;
     }
@@ -37,6 +37,10 @@ public abstract class AbstractShip {
             throw new IllegalStateException();
         }
         return displacement / mast;
+    }
+
+    public int numberOfCanons() {
+        return canonNumber;
     }
 
     protected abstract List<RaceStrategy> raceStrategies();

@@ -19,6 +19,6 @@ public class Clipper extends AbstractShip {
 
     @Override
     protected List<RaceStrategy> raceStrategies() {
-        return Arrays.asList(RaceStrategyFactory.INSTANCE.createRaceStategyBySpeedType(SpeedType.CLIPPER, this));
+        return Arrays.asList(RaceStrategyFactory.INSTANCE.createRaceStrategyBySpeedType(SpeedType.CLIPPER, this));
     }
 }

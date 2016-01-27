@@ -11,7 +11,7 @@ final class ClipperRaceStrategy extends RaceStrategy {
     }
 
     @Override
-    public double speed(double baseSpeed) {
+    public double adaptSpeed(double baseSpeed) {
         return baseSpeed - (baseSpeed * SPEED_PERCENTAGE);
     }
 }

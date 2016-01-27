@@ -5,13 +5,15 @@ import com.nespresso.sofa.recruitment.navalbattles.batteau.AbstractShip;
 public enum RaceStrategyFactory {
     INSTANCE;
 
-    public RaceStrategy createRaceStategyBySpeedType(final SpeedType speedType, final AbstractShip ship) {
+    public RaceStrategy createRaceStrategyBySpeedType(final SpeedType speedType, final AbstractShip ship) {
         if (speedType == null) {
-            throw new NullPointerException("Missing the speed type value");
+            throw new NullPointerException("Missing the adaptSpeed type value");
         }
         switch (speedType) {
             case CLIPPER:
                 return new ClipperRaceStrategy(ship);
+            case WITH_CANNON:
+                return new WithCanonsRaceStrategy(ship);
             default:
                 throw new IllegalStateException();
         }
