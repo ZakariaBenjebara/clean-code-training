@@ -19,6 +19,6 @@ public class Ship extends AbstractShip {
 
     @Override
     protected List<RaceStrategy> raceStrategies() {
-        return Arrays.asList(RaceStrategyFactory.INSTANCE.createRaceStrategyBySpeedType(SpeedType.WITH_CANNON, this));
+        return Arrays.asList(RaceStrategyFactory.INSTANCE.createRaceStrategyBySpeedType(SpeedType.WITH_CANON, this));
     }
 }

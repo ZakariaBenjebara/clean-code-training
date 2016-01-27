@@ -12,7 +12,7 @@ public enum RaceStrategyFactory {
         switch (speedType) {
             case CLIPPER:
                 return new ClipperRaceStrategy(ship);
-            case WITH_CANNON:
+            case WITH_CANON:
                 return new WithCanonsRaceStrategy(ship);
             default:
                 throw new IllegalStateException();
