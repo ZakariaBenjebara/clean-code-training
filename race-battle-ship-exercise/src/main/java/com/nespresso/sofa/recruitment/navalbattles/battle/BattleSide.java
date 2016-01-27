@@ -21,4 +21,8 @@ public final class BattleSide {
             ships.add(member);
         }
     }
+
+    public boolean isShunk() {
+        return false;
+    }
 }
