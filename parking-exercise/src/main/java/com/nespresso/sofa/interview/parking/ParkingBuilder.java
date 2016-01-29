@@ -29,7 +29,7 @@ public class ParkingBuilder {
     }
 
     public ParkingBuilder withPedestrianExit(final int pedestrianExitIndex) {
-        Pedestrian pedestrian = new Pedestrian(pedestrianExitIndex);
+        final Pedestrian pedestrian = new Pedestrian(pedestrianExitIndex);
         bays.set(pedestrianExitIndex, pedestrian);
         pedestrianBays.add(pedestrian);
         return this;
@@ -51,7 +51,7 @@ public class ParkingBuilder {
     }
 
     public Parking build() {
-        for (Pedestrian pedestrian : pedestrianBays) {
+        for (final Pedestrian pedestrian : pedestrianBays) {
             visitPedestrian(pedestrian);
         }
         return new Parking(Collections.unmodifiableList(bays));
