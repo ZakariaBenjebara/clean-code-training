@@ -1,6 +1,5 @@
 package com.nespresso.sofa.interview.parking.bay;
 
-import com.nespresso.sofa.interview.parking.PedestrianBay;
 import com.nespresso.sofa.interview.parking.Vehicle;
 import com.nespresso.sofa.interview.parking.strategy.ParkingStrategy;
 import com.nespresso.sofa.interview.parking.strategy.ParkingStrategyFactory;

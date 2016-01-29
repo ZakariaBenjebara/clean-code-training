@@ -1,11 +1,10 @@
-package com.nespresso.sofa.interview.parking;
+package com.nespresso.sofa.interview.parking.bay;
 
-import com.nespresso.sofa.interview.parking.bay.Bay;
-import com.nespresso.sofa.interview.parking.bay.BayType;
+import com.nespresso.sofa.interview.parking.visitor.ExitVisitable;
+import com.nespresso.sofa.interview.parking.Vehicle;
 import com.nespresso.sofa.interview.parking.strategy.ParkingStrategy;
 import com.nespresso.sofa.interview.parking.strategy.ParkingStrategyFactory;
 import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
-import com.nespresso.sofa.interview.parking.visitor.ExitVisitable;
 import com.nespresso.sofa.interview.parking.writer.BayWriterFactory;
 import com.nespresso.sofa.interview.parking.writer.Writable;
 

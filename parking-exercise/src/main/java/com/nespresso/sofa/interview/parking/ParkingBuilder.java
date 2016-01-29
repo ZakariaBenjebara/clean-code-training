@@ -1,7 +1,8 @@
 package com.nespresso.sofa.interview.parking;
 
-import com.nespresso.sofa.interview.parking.bay.Bay;
 import com.nespresso.sofa.interview.parking.bay.ForDisabledBay;
+import com.nespresso.sofa.interview.parking.bay.PedestrianBay;
+import com.nespresso.sofa.interview.parking.bay.Bay;
 import com.nespresso.sofa.interview.parking.bay.NonDisabledBay;
 
 import java.util.Collections;

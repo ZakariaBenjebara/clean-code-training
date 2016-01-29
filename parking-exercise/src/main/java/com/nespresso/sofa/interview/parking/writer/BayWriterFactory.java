@@ -1,8 +1,8 @@
 package com.nespresso.sofa.interview.parking.writer;
 
+import com.nespresso.sofa.interview.parking.Vehicle;
 import com.nespresso.sofa.interview.parking.bay.Bay;
 import com.nespresso.sofa.interview.parking.bay.BayType;
-import com.nespresso.sofa.interview.parking.Vehicle;
 
 public enum BayWriterFactory {
     INSTANCE;
