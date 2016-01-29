@@ -35,8 +35,7 @@ public class ParkingBuilder {
         return this;
     }
 
-    private void visitPedestrian(Pedestrian pedestrian) {
-        assert pedestrian instanceof Pedestrian;
+    private void visitPedestrian(final Pedestrian pedestrian) {
         for (final AbstractBay bay : bays) {
             if (bay instanceof ForDisabledPeople) {
                 pedestrian.accept((ForDisabledPeople) bay);
