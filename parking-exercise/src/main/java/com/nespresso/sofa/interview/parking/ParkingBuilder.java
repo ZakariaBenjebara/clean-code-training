@@ -1,9 +1,9 @@
 package com.nespresso.sofa.interview.parking;
 
 import com.nespresso.sofa.interview.parking.bay.AbstractBay;
-import com.nespresso.sofa.interview.parking.bay.ForDisabled;
+import com.nespresso.sofa.interview.parking.bay.ForDisabledPeople;
 import com.nespresso.sofa.interview.parking.bay.Pedestrian;
-import com.nespresso.sofa.interview.parking.bay.NonDisabled;
+import com.nespresso.sofa.interview.parking.bay.NonDisabledPeople;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -22,7 +22,7 @@ public class ParkingBuilder {
         final int parkDimension = size * size;
         bays = new LinkedList<>();
         for (int i = 0; i < parkDimension; i++) {
-            final AbstractBay bay = new NonDisabled(i);
+            final AbstractBay bay = new NonDisabledPeople(i);
             bays.add(bay);
         }
         return this;
@@ -38,16 +38,16 @@ public class ParkingBuilder {
     private void visitPedestrian(Pedestrian pedestrian) {
         assert pedestrian instanceof Pedestrian;
         for (final AbstractBay bay : bays) {
-            if (bay instanceof ForDisabled) {
-                pedestrian.accept((ForDisabled) bay);
-            } else if (bay instanceof NonDisabled) {
-                pedestrian.accept((NonDisabled) bay);
+            if (bay instanceof ForDisabledPeople) {
+                pedestrian.accept((ForDisabledPeople) bay);
+            } else if (bay instanceof NonDisabledPeople) {
+                pedestrian.accept((NonDisabledPeople) bay);
             }
         }
     }
 
     public ParkingBuilder withDisabledBay(final int disabledBayIndex) {
-        bays.set(disabledBayIndex, new ForDisabled(disabledBayIndex));
+        bays.set(disabledBayIndex, new ForDisabledPeople(disabledBayIndex));
         return this;
     }
 
