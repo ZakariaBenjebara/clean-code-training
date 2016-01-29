@@ -3,11 +3,11 @@ package com.nespresso.sofa.interview.parking.bay;
 import com.nespresso.sofa.interview.parking.Vehicle;
 import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
 
-public abstract class DefaultCanParkBay extends AbstractBay implements BayVisitor {
+public abstract class DefaultParkedBay extends AbstractBay implements BayVisitor {
 
     protected Vehicle parkedVehicle = null;
 
-    public DefaultCanParkBay(int bayNumber) {
+    public DefaultParkedBay(int bayNumber) {
         super(bayNumber);
     }
 
@@ -38,5 +38,4 @@ public abstract class DefaultCanParkBay extends AbstractBay implements BayVisito
             exitDistance = distance;
         }
     }
-
 }

@@ -22,12 +22,12 @@ public class Pedestrian extends AbstractBay implements ExitVisitable {
     }
 
     @Override
-    public boolean canPark(Vehicle vehicle) {
+    public boolean canPark(final Vehicle vehicle) {
         return parkingStrategy.canPark(vehicle);
     }
 
     @Override
-    public int park(Vehicle vehicle) {
+    public int park(final Vehicle vehicle) {
         return -1;
     }
 

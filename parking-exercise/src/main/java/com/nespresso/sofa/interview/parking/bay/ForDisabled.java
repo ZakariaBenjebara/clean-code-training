@@ -7,10 +7,10 @@ import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
 import com.nespresso.sofa.interview.parking.writer.BayWriterFactory;
 import com.nespresso.sofa.interview.parking.writer.Writable;
 
-public class ForDisabled extends DefaultCanParkBay implements BayVisitor {
+public class ForDisabled extends DefaultParkedBay implements BayVisitor {
 
     private final ParkingStrategy parkingStrategy;
-    
+
     public ForDisabled(int bayNumber) {
         super(bayNumber);
         parkingStrategy = ParkingStrategyFactory.INSTANCE.createParkingStrategyByBayType(BayType.DISABLED, this);

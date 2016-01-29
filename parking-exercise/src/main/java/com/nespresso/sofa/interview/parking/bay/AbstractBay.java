@@ -15,9 +15,9 @@ public abstract class AbstractBay implements Comparable<AbstractBay> {
 
     public abstract boolean isAvailable();
 
-    public abstract boolean canPark(Vehicle vehicle);
+    public abstract boolean canPark(final Vehicle vehicle);
 
-    public abstract int park(Vehicle vehicle);
+    public abstract int park(final Vehicle vehicle);
 
     public abstract boolean unpark();
 

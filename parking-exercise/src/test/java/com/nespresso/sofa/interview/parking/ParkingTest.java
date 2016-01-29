@@ -59,7 +59,6 @@ public class ParkingTest {
     @Test
     public void testUnparkCar() {
         final int firstCarBayIndex = parking.parkCar('C');
-        System.out.println(firstCarBayIndex);
         assertTrue(parking.unparkCar(firstCarBayIndex));
         assertEquals(23, parking.getAvailableBays());
         assertFalse(parking.unparkCar(firstCarBayIndex));

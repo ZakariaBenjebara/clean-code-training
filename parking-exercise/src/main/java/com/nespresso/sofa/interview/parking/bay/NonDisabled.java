@@ -7,7 +7,7 @@ import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
 import com.nespresso.sofa.interview.parking.writer.BayWriterFactory;
 import com.nespresso.sofa.interview.parking.writer.Writable;
 
-public class NonDisabled extends DefaultCanParkBay implements BayVisitor {
+public class NonDisabled extends DefaultParkedBay implements BayVisitor {
 
     private final ParkingStrategy parkingStrategy;
 
