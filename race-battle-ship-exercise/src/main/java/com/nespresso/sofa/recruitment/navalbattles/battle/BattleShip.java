@@ -16,8 +16,6 @@ public class BattleShip extends Ship {
 
     private final List<Mast> masts;
 
-    private ShipState state = ShipState.ACTIVE;
-
     private double health = 0;
 
     private DefenceChain chain = null;

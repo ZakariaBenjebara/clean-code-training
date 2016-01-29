@@ -1,7 +1,5 @@
 package com.nespresso.sofa.recruitment.navalbattles.battle.part;
 
-import com.nespresso.sofa.recruitment.navalbattles.battle.DefenceChain;
-
 public class Hull extends AbstractPart {
 
     private static final int TON_UNIT = 1000;

@@ -13,5 +13,6 @@
         <module>grossips-exercice</module>
         <module>train-exercise</module>
         <module>race-battle-ship-exercise</module>
+        <module>parking-exercise</module>
     </modules>
 </project>
