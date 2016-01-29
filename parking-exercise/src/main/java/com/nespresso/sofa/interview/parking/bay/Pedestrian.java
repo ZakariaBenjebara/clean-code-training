@@ -8,11 +8,11 @@ import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
 import com.nespresso.sofa.interview.parking.writer.BayWriterFactory;
 import com.nespresso.sofa.interview.parking.writer.Writable;
 
-public class PedestrianBay extends Bay implements ExitVisitable {
+public class Pedestrian extends AbstractBay implements ExitVisitable {
 
     private final ParkingStrategy parkingStrategy = ParkingStrategyFactory.INSTANCE.createParkingStrategyByBayType(BayType.PEDESTRIAN, this);
 
-    public PedestrianBay(int bayNumber) {
+    public Pedestrian(int bayNumber) {
         super(bayNumber);
     }
 

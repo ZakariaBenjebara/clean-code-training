@@ -1,6 +1,6 @@
 package com.nespresso.sofa.interview.parking;
 
-import com.nespresso.sofa.interview.parking.bay.Bay;
+import com.nespresso.sofa.interview.parking.bay.AbstractBay;
 import com.nespresso.sofa.interview.parking.writer.ParkingPrinter;
 
 import java.io.IOException;
@@ -14,9 +14,9 @@ import java.util.NoSuchElementException;
  */
 public class Parking {
 
-    private final List<Bay> bays;
+    private final List<AbstractBay> bays;
 
-    public Parking(List<Bay> bays) {
+    public Parking(List<AbstractBay> bays) {
         this.bays = bays;
     }
 
@@ -25,7 +25,7 @@ public class Parking {
      */
     public int getAvailableBays() {
         int availableBays = 0;
-        for (final Bay bay : bays) {
+        for (final AbstractBay bay : bays) {
             if (bay.isAvailable())
                 availableBays++;
         }
@@ -41,9 +41,9 @@ public class Parking {
      */
     public int parkCar(final char carType) {
         final Vehicle vehicle = new Vehicle(carType);
-        final List<Bay> orderedBays = new LinkedList<>(bays);
+        final List<AbstractBay> orderedBays = new LinkedList<>(bays);
         Collections.sort(orderedBays);
-        for (final Bay bay : orderedBays) {
+        for (final AbstractBay bay : orderedBays) {
             if (bay.canPark(vehicle)) {
                 return bay.park(vehicle);
             }
@@ -58,7 +58,7 @@ public class Parking {
      * @return true if a car was parked in the bay, false otherwise
      */
     public boolean unparkCar(final int index) {
-        final Bay bay = findBayByNumber(index);
+        final AbstractBay bay = findBayByNumber(index);
         return bay.unpark();
     }
 
@@ -88,8 +88,8 @@ public class Parking {
     }
 
 
-    private Bay findBayByNumber(int bayNumber) {
-        for (final Bay bay : bays) {
+    private AbstractBay findBayByNumber(int bayNumber) {
+        for (final AbstractBay bay : bays) {
             if (bay.equalsNumber(bayNumber))
                 return bay;
         }

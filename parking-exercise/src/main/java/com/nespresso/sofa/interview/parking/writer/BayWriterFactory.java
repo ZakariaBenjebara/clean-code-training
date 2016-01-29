@@ -1,7 +1,7 @@
 package com.nespresso.sofa.interview.parking.writer;
 
 import com.nespresso.sofa.interview.parking.Vehicle;
-import com.nespresso.sofa.interview.parking.bay.Bay;
+import com.nespresso.sofa.interview.parking.bay.AbstractBay;
 import com.nespresso.sofa.interview.parking.bay.BayType;
 
 public enum BayWriterFactory {
@@ -12,7 +12,7 @@ public enum BayWriterFactory {
             case NON_DISABLED:
                 return new NonDisabledWriter();
             case DISABLED:
-                return new DisabledWriter((Bay) type);
+                return new DisabledWriter((AbstractBay) type);
             case PEDESTRIAN:
                 return new PredetrianWriter();
             case OCCUPIED:

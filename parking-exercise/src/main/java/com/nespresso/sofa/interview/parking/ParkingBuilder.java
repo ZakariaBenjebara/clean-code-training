@@ -1,9 +1,9 @@
 package com.nespresso.sofa.interview.parking;
 
-import com.nespresso.sofa.interview.parking.bay.ForDisabledBay;
-import com.nespresso.sofa.interview.parking.bay.PedestrianBay;
-import com.nespresso.sofa.interview.parking.bay.Bay;
-import com.nespresso.sofa.interview.parking.bay.NonDisabledBay;
+import com.nespresso.sofa.interview.parking.bay.AbstractBay;
+import com.nespresso.sofa.interview.parking.bay.ForDisabled;
+import com.nespresso.sofa.interview.parking.bay.Pedestrian;
+import com.nespresso.sofa.interview.parking.bay.NonDisabled;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -14,45 +14,45 @@ import java.util.List;
  */
 public class ParkingBuilder {
 
-    private LinkedList<Bay> bays;
+    private LinkedList<AbstractBay> bays;
 
-    private List<PedestrianBay> pedestrianBays = new LinkedList<>();
+    private List<Pedestrian> pedestrianBays = new LinkedList<>();
 
     public ParkingBuilder withSquareSize(final int size) {
         final int parkDimension = size * size;
         bays = new LinkedList<>();
         for (int i = 0; i < parkDimension; i++) {
-            final Bay bay = new NonDisabledBay(i);
+            final AbstractBay bay = new NonDisabled(i);
             bays.add(bay);
         }
         return this;
     }
 
     public ParkingBuilder withPedestrianExit(final int pedestrianExitIndex) {
-        PedestrianBay pedestrian = new PedestrianBay(pedestrianExitIndex);
+        Pedestrian pedestrian = new Pedestrian(pedestrianExitIndex);
         bays.set(pedestrianExitIndex, pedestrian);
         pedestrianBays.add(pedestrian);
         return this;
     }
 
-    private void visitPedestrian(PedestrianBay pedestrian) {
-        assert pedestrian instanceof PedestrianBay;
-        for (final Bay bay : bays) {
-            if (bay instanceof ForDisabledBay) {
-                pedestrian.accept((ForDisabledBay) bay);
-            } else if (bay instanceof NonDisabledBay) {
-                pedestrian.accept((NonDisabledBay) bay);
+    private void visitPedestrian(Pedestrian pedestrian) {
+        assert pedestrian instanceof Pedestrian;
+        for (final AbstractBay bay : bays) {
+            if (bay instanceof ForDisabled) {
+                pedestrian.accept((ForDisabled) bay);
+            } else if (bay instanceof NonDisabled) {
+                pedestrian.accept((NonDisabled) bay);
             }
         }
     }
 
     public ParkingBuilder withDisabledBay(final int disabledBayIndex) {
-        bays.set(disabledBayIndex, new ForDisabledBay(disabledBayIndex));
+        bays.set(disabledBayIndex, new ForDisabled(disabledBayIndex));
         return this;
     }
 
     public Parking build() {
-        for (PedestrianBay pedestrian : pedestrianBays) {
+        for (Pedestrian pedestrian : pedestrianBays) {
             visitPedestrian(pedestrian);
         }
         return new Parking(Collections.unmodifiableList(bays));

@@ -1,11 +1,11 @@
 package com.nespresso.sofa.interview.parking.strategy;
 
 import com.nespresso.sofa.interview.parking.Vehicle;
-import com.nespresso.sofa.interview.parking.bay.Bay;
+import com.nespresso.sofa.interview.parking.bay.AbstractBay;
 
 final class ParkingForNonDisabledPeopleStrategy extends ParkingStrategy {
 
-    public ParkingForNonDisabledPeopleStrategy(Bay bay) {
+    public ParkingForNonDisabledPeopleStrategy(AbstractBay bay) {
         super(bay);
     }
 

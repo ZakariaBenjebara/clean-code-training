@@ -7,15 +7,14 @@ import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
 import com.nespresso.sofa.interview.parking.writer.BayWriterFactory;
 import com.nespresso.sofa.interview.parking.writer.Writable;
 
-public class ForDisabledBay extends Bay implements BayVisitor {
+public class NonDisabled extends AbstractBay implements BayVisitor {
 
     private final ParkingStrategy parkingStrategy;
-
     private Vehicle parkedVehicle = null;
 
-    public ForDisabledBay(int bayNumber) {
+    public NonDisabled(int bayNumber) {
         super(bayNumber);
-        parkingStrategy = ParkingStrategyFactory.INSTANCE.createParkingStrategyByBayType(BayType.DISABLED, this);
+        parkingStrategy = ParkingStrategyFactory.INSTANCE.createParkingStrategyByBayType(BayType.NON_DISABLED, this);
     }
 
     @Override
@@ -45,13 +44,13 @@ public class ForDisabledBay extends Bay implements BayVisitor {
 
     @Override
     public Writable createWriter() {
-        if (parkedVehicle !=  null)
+        if (parkedVehicle != null)
             return BayWriterFactory.INSTANCE.createWriter(BayType.OCCUPIED, parkedVehicle);
-        return BayWriterFactory.INSTANCE.createWriter(BayType.DISABLED, this);
+        return BayWriterFactory.INSTANCE.createWriter(BayType.NON_DISABLED, this);
     }
 
     @Override
-    public void visit(final PedestrianBay bay) {
+    public void visit(final Pedestrian bay) {
         int distance = Math.abs(this.bayNumber - bay.bayNumber);
         if (exitDistance > distance) {
             exitDistance = distance;

@@ -3,13 +3,13 @@ package com.nespresso.sofa.interview.parking.bay;
 import com.nespresso.sofa.interview.parking.Vehicle;
 import com.nespresso.sofa.interview.parking.writer.Writable;
 
-public abstract class Bay implements Comparable<Bay> {
+public abstract class AbstractBay implements Comparable<AbstractBay> {
 
     protected final int bayNumber;
 
     protected int exitDistance = Integer.MAX_VALUE;
 
-    public Bay(int bayNumber) {
+    public AbstractBay(int bayNumber) {
         this.bayNumber = bayNumber;
     }
 
@@ -28,7 +28,7 @@ public abstract class Bay implements Comparable<Bay> {
     }
 
     @Override
-    public int compareTo(final Bay o2) {
+    public int compareTo(final AbstractBay o2) {
         if (this.exitDistance > o2.exitDistance)
             return 1;
         else if (this.exitDistance < o2.exitDistance)
@@ -41,7 +41,7 @@ public abstract class Bay implements Comparable<Bay> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Bay bay = (Bay) o;
+        AbstractBay bay = (AbstractBay) o;
 
         if (bayNumber != bay.bayNumber) return false;
         return exitDistance == bay.exitDistance;
@@ -57,7 +57,7 @@ public abstract class Bay implements Comparable<Bay> {
 
     @Override
     public String toString() {
-        return "Bay{" +
+        return "AbstractBay{" +
                 "bayNumber=" + bayNumber +
                 ", exitDistance=" + exitDistance +
                 '}';
