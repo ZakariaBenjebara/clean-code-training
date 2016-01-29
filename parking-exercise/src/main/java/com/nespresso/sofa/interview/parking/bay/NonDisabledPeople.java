@@ -7,13 +7,13 @@ import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
 import com.nespresso.sofa.interview.parking.writer.BayWriterFactory;
 import com.nespresso.sofa.interview.parking.writer.Writable;
 
-public class ForDisabled extends DefaultBay implements BayVisitor {
+public class NonDisabledPeople extends DefaultBay implements BayVisitor {
 
     private final ParkingStrategy parkingStrategy;
 
-    public ForDisabled(int bayNumber) {
+    public NonDisabledPeople(int bayNumber) {
         super(bayNumber);
-        parkingStrategy = ParkingStrategyFactory.INSTANCE.createParkingStrategyByBayType(BayType.DISABLED, this);
+        parkingStrategy = ParkingStrategyFactory.INSTANCE.createParkingStrategyByBayType(BayType.NON_DISABLED, this);
     }
 
     @Override
@@ -23,8 +23,8 @@ public class ForDisabled extends DefaultBay implements BayVisitor {
 
     @Override
     public Writable createWriter() {
-        if (parkedVehicle !=  null)
+        if (parkedVehicle != null)
             return BayWriterFactory.INSTANCE.createWriter(BayType.OCCUPIED, parkedVehicle);
-        return BayWriterFactory.INSTANCE.createWriter(BayType.DISABLED, this);
+        return BayWriterFactory.INSTANCE.createWriter(BayType.NON_DISABLED, this);
     }
 }
