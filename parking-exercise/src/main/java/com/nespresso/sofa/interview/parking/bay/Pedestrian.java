@@ -18,6 +18,7 @@ public class Pedestrian extends AbstractBay implements ExitVisitable {
 
     @Override
     public boolean isAvailable() {
+        // TODO : call the strategy
         return false;
     }
 

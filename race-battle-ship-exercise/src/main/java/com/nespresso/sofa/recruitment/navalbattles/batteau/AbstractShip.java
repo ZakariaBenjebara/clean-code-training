@@ -32,7 +32,7 @@ public abstract class AbstractShip {
         return speed;
     }
 
-    public double baseSpeed() {
+    protected final double baseSpeed() {
         if (mast == 0) {
             throw new IllegalStateException();
         }

@@ -15,14 +15,51 @@ public final class BattleSide {
 
     public void reinforceSide(final Ship[] members) {
         if (members == null) {
-            throw new NullPointerException("Missing the member to the side");
+            throw new IllegalArgumentException("Missing the member to the side");
         }
         for (final Ship member : members) {
             ships.add(member);
         }
     }
 
-    public boolean isShunk() {
+    public boolean containsSide(final Ship side) {
+        return ships.contains(side);
+    }
+
+    public void attack(final BattleSide otherSide) {
+        for (final Ship ship : ships) {
+            if (ship.isSunk())
+                continue;
+            if (!otherSide.defend(ship.attack())) {
+                return;
+            }
+        }
+    }
+
+    public boolean defend(final double attack) {
+        for (final Ship ship : ships) {
+            if (!ship.isSunk()) {
+                ship.defence(attack);
+                return true;
+            }
+        }
         return false;
+    }
+
+    public boolean isSunk() {
+        for (final Ship ship : ships) {
+            System.out.println(ship);
+            if (!ship.isSunk()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public String toString() {
+        return "BattleSide{" +
+                "ships=" + ships +
+                '}';
     }
 }

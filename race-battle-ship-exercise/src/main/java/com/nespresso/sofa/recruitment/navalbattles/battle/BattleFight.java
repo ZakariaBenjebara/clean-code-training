@@ -11,8 +11,13 @@ public final class BattleFight {
         this.enemy = enemy;
     }
 
-    public void fight(){
 
+    public BattleSide fight() {
+        do {
+            enemy.attack(allie);
+            allie.attack(enemy);
+        } while (!enemy.isSunk() && !allie.isSunk());
+
+        return enemy.isSunk() ? allie : enemy;
     }
-
 }

@@ -4,7 +4,7 @@ import com.nespresso.sofa.recruitment.navalbattles.batteau.AbstractShip;
 
 final class WithCanonsRaceStrategy extends RaceStrategy {
 
-    private static final double CANNON_SPEED_PENALTY = 0.005;
+    private static final double CANON_SPEED_PENALTY = 0.005;
 
     public WithCanonsRaceStrategy(final AbstractShip ship) {
         super(ship);
@@ -14,7 +14,7 @@ final class WithCanonsRaceStrategy extends RaceStrategy {
     public double adaptSpeed(final double baseSpeed) {
         double adaptedSpeed = baseSpeed;
         for (int i = 1; i <= ship.numberOfCanons(); i++) {
-            adaptedSpeed += adaptedSpeed * CANNON_SPEED_PENALTY;
+            adaptedSpeed += adaptedSpeed * CANON_SPEED_PENALTY;
         }
         return adaptedSpeed;
     }

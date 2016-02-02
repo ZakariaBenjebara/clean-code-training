@@ -1,13 +1,22 @@
 package com.nespresso.sofa.recruitment.navalbattles.battle.round;
 
+import java.util.LinkedList;
 import java.util.List;
 
-public final class FightRoundHandler {
+public final class FightRoundHandler<T extends  FightRoundListener> {
 
-    private final List<FightRoundListener> listeners;
+    private List<T> listeners = new LinkedList<>();
 
-    public FightRoundHandler(final List<FightRoundListener> listeners) {
-        this.listeners = listeners;
+    public FightRoundHandler() {}
+
+    public void addListener(T listener) {
+        listeners.add(listener);
+    }
+
+    public void addListeners(T... listeners) {
+        for (final T listener : listeners) {
+            addListener(listener);
+        }
     }
 
     public void fireEvent() {
