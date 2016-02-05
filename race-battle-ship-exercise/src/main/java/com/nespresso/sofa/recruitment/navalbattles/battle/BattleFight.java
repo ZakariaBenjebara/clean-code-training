@@ -11,7 +11,6 @@ public final class BattleFight {
         this.enemy = enemy;
     }
 
-
     public BattleSide fight() {
         do {
             enemy.attack(allie);

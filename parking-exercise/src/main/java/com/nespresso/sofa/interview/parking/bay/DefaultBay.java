@@ -3,7 +3,7 @@ package com.nespresso.sofa.interview.parking.bay;
 import com.nespresso.sofa.interview.parking.Vehicle;
 import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
 
-public abstract class DefaultBay extends AbstractBay implements BayVisitor {
+abstract class DefaultBay extends AbstractBay implements BayVisitor {
 
     protected Vehicle parkedVehicle = null;
 

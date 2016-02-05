@@ -13,6 +13,7 @@
         <module>gossips-exercise</module>
         <module>train-exercise</module>
         <module>race-battle-ship-exercise</module>
+        <module>race-battle-ship-exercise-v2</module>
         <module>parking-exercise</module>
     </modules>
 </project>

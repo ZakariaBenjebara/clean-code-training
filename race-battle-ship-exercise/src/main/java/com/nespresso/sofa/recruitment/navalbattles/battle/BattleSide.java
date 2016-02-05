@@ -3,6 +3,7 @@ package com.nespresso.sofa.recruitment.navalbattles.battle;
 import com.nespresso.sofa.recruitment.navalbattles.batteau.Ship;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public final class BattleSide {
@@ -48,7 +49,6 @@ public final class BattleSide {
 
     public boolean isSunk() {
         for (final Ship ship : ships) {
-            System.out.println(ship);
             if (!ship.isSunk()) {
                 return false;
             }

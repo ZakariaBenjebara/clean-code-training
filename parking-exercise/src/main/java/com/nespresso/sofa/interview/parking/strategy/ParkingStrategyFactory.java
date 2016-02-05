@@ -1,13 +1,13 @@
 package com.nespresso.sofa.interview.parking.strategy;
 
 import com.nespresso.sofa.interview.parking.bay.AbstractBay;
-import com.nespresso.sofa.interview.parking.bay.BayType;
+import com.nespresso.sofa.interview.parking.writer.WriterType;
 
 public enum ParkingStrategyFactory {
     INSTANCE;
 
-    public ParkingStrategy createParkingStrategyByBayType(final BayType bayType, final AbstractBay bay) {
-        switch (bayType) {
+    public ParkingStrategy createParkingStrategyByBayType(final WriterType writerType, final AbstractBay bay) {
+        switch (writerType) {
             case NON_DISABLED:
                 return new ParkingForNonDisabledPeopleStrategy(bay);
             case DISABLED:

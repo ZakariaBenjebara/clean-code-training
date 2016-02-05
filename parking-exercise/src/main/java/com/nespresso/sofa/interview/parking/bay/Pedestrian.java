@@ -5,12 +5,13 @@ import com.nespresso.sofa.interview.parking.Vehicle;
 import com.nespresso.sofa.interview.parking.strategy.ParkingStrategy;
 import com.nespresso.sofa.interview.parking.strategy.ParkingStrategyFactory;
 import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
+import com.nespresso.sofa.interview.parking.writer.WriterType;
 import com.nespresso.sofa.interview.parking.writer.BayWriterFactory;
 import com.nespresso.sofa.interview.parking.writer.Writable;
 
 public class Pedestrian extends AbstractBay implements ExitVisitable {
 
-    private final ParkingStrategy parkingStrategy = ParkingStrategyFactory.INSTANCE.createParkingStrategyByBayType(BayType.PEDESTRIAN, this);
+    private final ParkingStrategy parkingStrategy = ParkingStrategyFactory.INSTANCE.createParkingStrategyByBayType(WriterType.PEDESTRIAN, this);
 
     public Pedestrian(int bayNumber) {
         super(bayNumber);
@@ -39,7 +40,7 @@ public class Pedestrian extends AbstractBay implements ExitVisitable {
 
     @Override
     public Writable createWriter() {
-        return BayWriterFactory.INSTANCE.createWriter(BayType.PEDESTRIAN, this);
+        return BayWriterFactory.INSTANCE.createWriter(WriterType.PEDESTRIAN, null);
     }
 
     @Override

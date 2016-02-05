@@ -1,22 +1,20 @@
 package com.nespresso.sofa.interview.parking.writer;
 
-import com.nespresso.sofa.interview.parking.Vehicle;
-import com.nespresso.sofa.interview.parking.bay.AbstractBay;
-import com.nespresso.sofa.interview.parking.bay.BayType;
-
 public enum BayWriterFactory {
     INSTANCE;
 
-    public <T> Writable createWriter(final BayType bayType, final T type) {
-        switch (bayType) {
+    public <T> Writable createWriter(final WriterType writerType, T t) {
+        switch (writerType) {
             case NON_DISABLED:
                 return new NonDisabledWriter();
             case DISABLED:
-                return new DisabledWriter((AbstractBay) type);
+                return new DisabledWriter();
+            case DISABLED_AND_OCCUPIED:
+                return new OccupiedDisabledWriter();
             case PEDESTRIAN:
-                return new PredetrianWriter();
+                return new PedestrianWriter();
             case OCCUPIED:
-                return new VehicleWriter((Vehicle) type);
+                return new VehicleWriter((Character) t);
             default:
                 throw new IllegalArgumentException();
         }
