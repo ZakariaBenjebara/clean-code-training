@@ -15,5 +15,6 @@
         <module>race-battle-ship-exercise</module>
         <module>race-battle-ship-exercise-v2</module>
         <module>parking-exercise</module>
+        <module>labirynth</module>
     </modules>
 </project>
