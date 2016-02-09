@@ -4,11 +4,11 @@ import com.nespresso.sofa.interview.parking.Car;
 import com.nespresso.sofa.interview.parking.HasParkingPlace;
 import com.nespresso.sofa.interview.parking.visitor.BayVisitor;
 
-abstract class ForCar extends AbstractBay implements HasParkingPlace, BayVisitor {
+abstract class AbstractBayForCar extends AbstractBay implements HasParkingPlace, BayVisitor {
 
     protected Car parkedCar;
 
-    public ForCar(int number) {
+    public AbstractBayForCar(int number) {
         super(number);
     }
 

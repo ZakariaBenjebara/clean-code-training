@@ -3,7 +3,7 @@ package com.nespresso.sofa.interview.parking.bay;
 import com.nespresso.sofa.interview.parking.Car;
 import com.nespresso.sofa.interview.parking.writer.ParkingWriter;
 
-final class ForNormalPeople extends ForCar {
+final class ForNormalPeople extends AbstractBayForCar {
 
     public ForNormalPeople(int number) {
         super(number);

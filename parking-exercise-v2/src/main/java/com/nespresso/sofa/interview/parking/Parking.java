@@ -3,7 +3,6 @@ package com.nespresso.sofa.interview.parking;
 import com.nespresso.sofa.interview.parking.bay.AbstractBay;
 import com.nespresso.sofa.interview.parking.writer.ParkingPrinter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
