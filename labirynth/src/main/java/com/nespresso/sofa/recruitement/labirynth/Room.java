@@ -10,7 +10,7 @@ public class Room {
     private final String roomId;
 
     private final Set<AbstractGate> gates = new HashSet<>();
-    
+
     public Room(String roomId) {
         this.roomId = roomId;
     }
