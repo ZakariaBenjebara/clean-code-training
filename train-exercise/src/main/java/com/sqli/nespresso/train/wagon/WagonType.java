@@ -13,6 +13,7 @@ public enum  WagonType {
         assertNotNull(wagonId);
         switch (wagonId) {
             case 'H':
+            case 'N':
                 return HEAD;
             case 'P':
                 return PASSENGER;

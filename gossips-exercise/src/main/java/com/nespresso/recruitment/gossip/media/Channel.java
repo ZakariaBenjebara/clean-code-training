@@ -42,12 +42,4 @@ public class Channel implements Observer {
             }
         }
     }
-
-    @Override
-    public String toString() {
-        return "Channel{" +
-                "source=" + source +
-                ", receiver=" + receiver +
-                '}';
-    }
 }

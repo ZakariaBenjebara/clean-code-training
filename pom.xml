@@ -17,5 +17,6 @@
         <module>parking-exercise</module>
         <module>labirynth</module>
         <module>parking-exercise-v2</module>
+        <module>vehicles-exercise</module>
     </modules>
 </project>

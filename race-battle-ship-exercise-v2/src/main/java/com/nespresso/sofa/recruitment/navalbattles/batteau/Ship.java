@@ -27,9 +27,6 @@ public class Ship extends AbstractShip {
 
     @Override
     public boolean equals(Object o) {
-        System.out.println("ships equals");
-        System.out.println(o);
-        System.out.println(this);
         if (this == o) return true;
         return false;
     }

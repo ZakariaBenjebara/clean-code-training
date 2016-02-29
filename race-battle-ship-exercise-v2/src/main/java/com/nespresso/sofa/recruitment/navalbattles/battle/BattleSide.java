@@ -43,7 +43,7 @@ public final class BattleSide implements Observer {
         for (final BattleShip battleShip : battleShips) {
             if (!damage.canDoDamage())
                 return;
-                damage = battleShip.defend(damage);
+            damage = battleShip.defend(damage);
         }
     }
 
@@ -57,7 +57,6 @@ public final class BattleSide implements Observer {
 
     @Override
     public void update(Observable o, Object arg) {
-        System.out.println("this ship  is shunk " + o);
         bonus--;
         additionalBonus();
     }

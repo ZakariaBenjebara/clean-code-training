@@ -8,7 +8,6 @@ public class Head extends Wagon {
 
     @Override
     public boolean fill() {
-
         return false;
     }
 

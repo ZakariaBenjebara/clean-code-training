@@ -18,34 +18,34 @@ public final class ParkingWriter {
 
     public void emitEmptyNormalBay() {
         part.append("U");
-        adopt();
+        adapt();
     }
 
     public void emitPedestrianExit() {
         part.append("=");
-        adopt();
+        adapt();
     }
 
     public void emitEmptyDisabledBay() {
         part.append("@");
-        adopt();
+        adapt();
     }
 
     public void emitOccupiedDisabledBay() {
         part.append("D");
-        adopt();
+        adapt();
     }
 
     public void emitOccupiedNormalBay(final char carType) {
         part.append(carType);
-        adopt();
+        adapt();
     }
 
     public StringBuilder build() {
         return out.deleteCharAt(out.length() - 1);
     }
 
-    private void adopt() {
+    private void adapt() {
         counterDim++;
         if (counterDim == dimension) {
             if (currentDim % 2 != 0) {

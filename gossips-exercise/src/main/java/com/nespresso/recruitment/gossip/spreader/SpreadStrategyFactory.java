@@ -29,5 +29,4 @@ public enum SpreadStrategyFactory {
                 throw new IllegalStateException();
         }
     }
-
 }
