@@ -21,8 +21,8 @@ public final class VehicleReporter {
         emitVehicleHead();
     }
 
-    public void emitConsummation(String vehicle, float consummation) {
-        builder.append("The "+vehicle+" will consume "+String.format(Locale.ENGLISH, "%.2f", consummation) +" L ");
+    public void emitConsummation(final String vehicle, float consummation) {
+        builder.append("The "+ vehicle +" will consume "+ String.format(Locale.ENGLISH, "%.2f", consummation) +" L ");
     }
 
     public void emitOpenedDoor(int number) {
@@ -63,10 +63,8 @@ public final class VehicleReporter {
         } else {
             emptySpace();
             builder.append(closed ? "|" : "/");
-            if (number == 3) {
-                builder.append("_");
-            } else
-                emptySpace();
+            if (number == 3) builder.append("_");
+            else emptySpace();
         }
     }
 
