@@ -30,7 +30,7 @@ public class Vehicle {
         updateDoorSates(doorIds);
         if (doorIds.length == this.doors.size()) {
             reporter.emitDoorsOk();
-            reporter.emitConsummation(vehicleType.name(), fuel.consummation(distance));
+            reporter.emitConsummation(vehicleType.name(), fuel.consumption(distance));
         } else {
             reporter.emitDoorsKo();
             for (final Door door : doors) {

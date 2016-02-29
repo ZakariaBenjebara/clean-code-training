@@ -6,15 +6,15 @@ public enum Fuel {
 
     private final String nameOfFuel;
 
-    private final float consume;
+    private final float consummation;
 
-    Fuel(String nameOfFuel, float consume) {
+    Fuel(String nameOfFuel, float consummation) {
         this.nameOfFuel = nameOfFuel;
-        this.consume = consume;
+        this.consummation = consummation;
     }
 
-    public final float consummation(final float distance) {
-        return distance * consume;
+    public final float consumption(final float distance) {
+        return distance * consummation;
     }
 
     public static Fuel of(final String nameOfFuel) {
