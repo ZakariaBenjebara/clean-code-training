@@ -30,8 +30,7 @@ public class Vehicles {
         }
 
         static float parseDistance(final String distance) {
-            float d = Float.valueOf(distance.split(" ")[0]);
-            return d;
+            return Float.valueOf(distance.split(" ")[0]);
         }
 
         static Map<VehicleType, Vehicle> parseVehicles(final String vehicles) {
@@ -39,9 +38,9 @@ public class Vehicles {
             final String[] vlist = vehicles.split(", ");
             for (final String vehicle : vlist) {
                 final String[] vpart = vehicle.split(":");
-                VehicleType vehicleType = VehicleType.fromString(vpart[0]);
-                Fuel fuel = Fuel.of(vpart[1]);
-                int doorNumber = Integer.valueOf(vpart[2]);
+                final VehicleType vehicleType = VehicleType.fromString(vpart[0]);
+                final Fuel fuel = Fuel.of(vpart[1]);
+                final int doorNumber = Integer.valueOf(vpart[2]);
                 vehicleMap.put(vehicleType, new Vehicle(vehicleType, fuel, doorNumber));
             }
             return vehicleMap;
