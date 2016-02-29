@@ -18,7 +18,7 @@ public final class VehicleReporter {
         separator();
         emptySpace();
         blocked();
-        emitVehicleHead();
+        head();
     }
 
     public void emitConsummation(final String vehicle, float consummation) {
@@ -68,7 +68,7 @@ public final class VehicleReporter {
         }
     }
 
-    private void emitVehicleHead() {
+    private void head() {
         emptySpace();
         emptySpace();
         builder.append("_");
