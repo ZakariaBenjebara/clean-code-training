@@ -19,7 +19,7 @@ public class Door {
             state = State.CLOSED;
     }
 
-    public void emitState(VehicleReporter reporter) {
+    public void emitState(final VehicleReporter reporter) {
         if (state == State.OPENED)
             reporter.emitOpenedDoor(number);
         else

@@ -1,6 +1,5 @@
 package com.nespresso.sofa.interview.vehicles;
 
-import java.text.DecimalFormat;
 import java.util.Locale;
 
 public final class VehicleReporter {
@@ -26,6 +25,14 @@ public final class VehicleReporter {
         builder.append("The "+vehicle+" will consume "+String.format(Locale.ENGLISH, "%.2f", consummation) +" L ");
     }
 
+    public void emitOpenedDoor(int number) {
+        emitDoor(number, false);
+    }
+
+    public void emitClosedDoor(int number) {
+        emitDoor(number, true);
+    }
+
     private void moving() {
         builder.append("MOVING.");
         appendEmptySpace();
@@ -49,30 +56,13 @@ public final class VehicleReporter {
         builder.append("\n");
     }
 
-    public void emitOpenedDoor(int number) {
+    private void emitDoor(int number, boolean closed) {
         if (number % 2 == 0) {
-            builder.append("\\");
+            builder.append(closed ? "|" : "\\");
             newLine();
-            return;
         } else {
             appendEmptySpace();
-            builder.append("/");
-            if (number == 3) {
-                builder.append("_");
-            } else
-                appendEmptySpace();
-        }
-
-    }
-
-    public void emitClosedDoor(int number) {
-        if (number % 2 == 0) {
-            builder.append("|");
-            newLine();
-            return;
-        } else {
-            appendEmptySpace();
-            builder.append("|");
+            builder.append(closed ? "|" : "/");
             if (number == 3) {
                 builder.append("_");
             } else

@@ -1,8 +1,6 @@
 package com.nespresso.sofa.interview.vehicles;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Vehicles {
