@@ -8,15 +8,15 @@ public final class VehicleReporter {
 
     public void emitDoorsOk() {
         builder.append("DOORS OK");
-        appendSeparator();
-        appendEmptySpace();
+        separator();
+        emptySpace();
         moving();
     }
 
     public void emitDoorsKo() {
         builder.append("DOORS KO");
-        appendSeparator();
-        appendEmptySpace();
+        separator();
+        emptySpace();
         blocked();
         emitVehicleHead();
     }
@@ -35,20 +35,20 @@ public final class VehicleReporter {
 
     private void moving() {
         builder.append("MOVING.");
-        appendEmptySpace();
+        emptySpace();
     }
 
     private void blocked() {
         builder.append("BLOCKED");
-        appendEmptySpace();
+        emptySpace();
         newLine();
     }
 
-    private void appendSeparator() {
+    private void separator() {
         builder.append(",");
     }
 
-    private void appendEmptySpace() {
+    private void emptySpace() {
         builder.append(" ");
     }
 
@@ -61,18 +61,18 @@ public final class VehicleReporter {
             builder.append(closed ? "|" : "\\");
             newLine();
         } else {
-            appendEmptySpace();
+            emptySpace();
             builder.append(closed ? "|" : "/");
             if (number == 3) {
                 builder.append("_");
             } else
-                appendEmptySpace();
+                emptySpace();
         }
     }
 
     private void emitVehicleHead() {
-        appendEmptySpace();
-        appendEmptySpace();
+        emptySpace();
+        emptySpace();
         builder.append("_");
         newLine();
     }
