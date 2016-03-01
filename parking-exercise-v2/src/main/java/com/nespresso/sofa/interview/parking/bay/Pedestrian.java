@@ -6,7 +6,7 @@ import com.nespresso.sofa.interview.parking.writer.ParkingWriter;
 
 final class Pedestrian extends AbstractBay implements PedestrianVisitable {
 
-    Pedestrian(int number) {
+    public Pedestrian(int number) {
         super(number);
     }
 

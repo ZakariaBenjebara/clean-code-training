@@ -5,7 +5,7 @@ import com.nespresso.sofa.interview.parking.writer.ParkingWriter;
 
 final class ForDisabledPeople extends AbstractBayForCar {
 
-    ForDisabledPeople(int number) {
+    public ForDisabledPeople(int number) {
         super(number);
     }
 

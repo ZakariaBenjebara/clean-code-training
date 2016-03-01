@@ -7,7 +7,6 @@ import com.nespresso.sofa.interview.parking.visitor.PedestrianVisitable;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,27 +14,27 @@ import java.util.List;
  */
 public class ParkingBuilder {
 
-    private final List<AbstractBay> bays = new LinkedList<>();
+    private final List<AbstractBay> bays = new ArrayList<>();
 
     private final List<PedestrianVisitable> pedestrians = new ArrayList<>();
 
     public ParkingBuilder withSquareSize(final int size) {
         final int dimension = size * size;
-        for (int number = 0; number < dimension; number++) {
-            bays.add(BayFactory.NORMAL_PEOPLE.create(number));
+        for (int i = 0; i < dimension; i++) {
+            bays.add(BayFactory.NORMAL_PEOPLE.create(i));
         }
         return this;
     }
 
-    public ParkingBuilder withPedestrianExit(final int pedestrianExitNumber) {
-        final AbstractBay pedestrian = BayFactory.PEDESTRIAN.create(pedestrianExitNumber);
-        bays.set(pedestrianExitNumber, pedestrian);
+    public ParkingBuilder withPedestrianExit(final int pedestrianExitIndex) {
+        final AbstractBay pedestrian = BayFactory.PEDESTRIAN.create(pedestrianExitIndex);
+        bays.set(pedestrianExitIndex, pedestrian);
         pedestrians.add((PedestrianVisitable) pedestrian);
         return this;
     }
-    public ParkingBuilder withDisabledBay(final int disabledBayNumber) {
-        final AbstractBay disabled = BayFactory.DISABLED_PEOPLE.create((disabledBayNumber));
-        bays.set(disabledBayNumber, disabled);
+    public ParkingBuilder withDisabledBay(final int disabledBayIndex) {
+        final AbstractBay disabled = BayFactory.DISABLED_PEOPLE.create((disabledBayIndex));
+        bays.set(disabledBayIndex, disabled);
         return this;
     }
 
