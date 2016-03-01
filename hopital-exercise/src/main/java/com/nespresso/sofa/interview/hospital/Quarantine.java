@@ -6,7 +6,7 @@ import java.util.Set;
 
 import static com.nespresso.sofa.interview.hospital.Treatment.*;
 
-public class Quarantine {
+final class Quarantine {
 
     /**
      * To perform this exercise, you will use a readable, maintainable & pragmatic coding style.
@@ -23,7 +23,6 @@ public class Quarantine {
     private final TreatmentPlan treatmentPlan = new TreatmentPlan(this);
 
     private final Reporter reporter = new QuarantineReporter();
-
 
     public Quarantine(final String subjects) {
         final String[] diseases = subjects.split(",");

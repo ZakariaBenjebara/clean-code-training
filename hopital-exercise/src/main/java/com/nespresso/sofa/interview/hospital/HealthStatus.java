@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import static com.nespresso.sofa.interview.hospital.Treatment.*;
 
-public enum HealthStatus {
+enum HealthStatus {
 
     FEVER("F") {
         @Override
