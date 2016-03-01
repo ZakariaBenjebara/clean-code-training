@@ -1,8 +1,6 @@
 package com.nespresso.sofa.interview.parking.bay;
 
 import com.nespresso.sofa.interview.parking.Car;
-import com.nespresso.sofa.interview.parking.test.DisabledCar;
-import com.nespresso.sofa.interview.parking.test.NormalCar;
 import com.nespresso.sofa.interview.parking.writer.ParkingWriter;
 
 final class ForDisabledPeople extends AbstractBayForCar {
