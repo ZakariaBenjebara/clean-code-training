@@ -11,7 +11,7 @@ final class Patient {
     }
 
     void applyTreatments(Set<Treatment> treatments) {
-        this.healthStatus = healthStatus.toNextState(treatments);
+        this.healthStatus = healthStatus.healWith(treatments);
     }
 
     void appendStatToReport(ReportAppendable appendable) {

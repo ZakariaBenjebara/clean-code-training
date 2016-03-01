@@ -59,15 +59,14 @@ enum HealthStatus {
         throw new IllegalStateException("the name of stat'" + stat + "' not exist");
     }
 
-    public final HealthStatus toNextState(final Collection<Treatment> treatments) {
+    final HealthStatus healWith(final Collection<Treatment> treatments) {
         if (badTreatment(treatments))
             return DEAD;
         return apply(treatments);
     }
 
-    private boolean badTreatment(final Collection<Treatment> listOfTreatments) {
-        return listOfTreatments.contains(Treatment.PARACETAMOL)
-                && listOfTreatments.contains(Treatment.ASPIRINE);
+    final void appendStatusToReport(ReportAppendable<HealthStatus> appendable) {
+        appendable.append(this);
     }
 
     @Override
@@ -75,8 +74,9 @@ enum HealthStatus {
         return stat;
     }
 
-    void appendStatusToReport(ReportAppendable<HealthStatus> appendable) {
-        appendable.append(this);
+    private boolean badTreatment(final Collection<Treatment> listOfTreatments) {
+        return listOfTreatments.contains(Treatment.PARACETAMOL)
+                && listOfTreatments.contains(Treatment.ASPIRINE);
     }
 
     protected abstract HealthStatus apply(Collection<Treatment> treatments);
