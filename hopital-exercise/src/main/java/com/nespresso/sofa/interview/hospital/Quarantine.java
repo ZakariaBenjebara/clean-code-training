@@ -1,5 +1,6 @@
 package com.nespresso.sofa.interview.hospital;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -72,6 +73,6 @@ final class Quarantine {
             final HealthStatus healthStatus = HealthStatus.fromString(disease);
             patients.add(Patient.Factory.of(healthStatus));
         }
-        return patients;
+        return Collections.unmodifiableList(patients);
     }
 }

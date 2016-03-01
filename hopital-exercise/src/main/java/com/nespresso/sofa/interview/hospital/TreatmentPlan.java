@@ -21,12 +21,12 @@ final class TreatmentPlan {
         return this;
     }
 
-    Set<Treatment> build() {
-        return Collections.unmodifiableSet(listOfTreatments);
-    }
-
     private boolean badTreatment() {
         return listOfTreatments.contains(Treatment.PARACETAMOL)
                 && listOfTreatments.contains(Treatment.ASPIRINE);
+    }
+
+    Set<Treatment> build() {
+        return Collections.unmodifiableSet(listOfTreatments);
     }
 }
